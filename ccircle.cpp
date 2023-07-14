@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ccircle.h"
 
 CCircle::CCircle(POINT p)

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "cline.h"
 
 CLine::CLine(POINT p)

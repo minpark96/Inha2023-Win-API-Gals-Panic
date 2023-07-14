@@ -1,8 +1,10 @@
 ﻿// WinAPI_GalsPainc_Proj.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
+#include "pch.h"
 #include "framework.h"
 #include "WinAPI_GalsPainc_Proj.h"
+#include "CCore.h"
 
 #define MAX_LOADSTRING 100
 
@@ -15,6 +17,7 @@ void DrawDoubleBuffering(HWND hWnd, HDC hdc, CCircle& cir, std::list<CLine>& cl)
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
+HWND hWnd;
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
@@ -45,20 +48,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
+    // Core 초기화
+    if (FAILED(CCore::GetInstance()->init(hWnd, POINT{1280, 768})))
+    {
+        MessageBox(nullptr, L"Core 객체 초기화 실패", L"ERROR", MB_OK);
+
+        return FALSE;
+    }
+
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINAPIGALSPAINCPROJ));
 
     MSG msg;
 
-    DWORD dwPrevCount = GetTickCount();
-
-    DWORD dwAccCount = 0;
     // 기본 메시지 루프입니다:
     while (true)
     {
         if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
-            int iTime = GetTickCount();
-
             if (msg.message == WM_QUIT)
             {
                 break;
@@ -69,26 +75,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 TranslateMessage(&msg);
                 DispatchMessage(&msg);
             }
-
-            dwAccCount += (GetTickCount() - iTime);
         }
 
         // 메세지가 발생하지 않는 대부분의 시간
         else
         {
-            DWORD dwCurCount = GetTickCount();
-            if (dwPrevCount - dwCurCount > 1000)
-            {
-                float fRatio = (float)dwAccCount / 1000.f;
-
-                wchar_t szBuff[50] = {};
-                wsprintf(szBuff, L"비율 : %f", fRatio);
-                SetWindowText(hWnd, szBuff);
-            }
-
             // Game 코드 수행
             // 디자인 패턴(설계 유형)
-
+            // 싱글톤 패턴
+            CCore::GetInstance()->progress();
         }
     }
 
@@ -137,7 +132,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)

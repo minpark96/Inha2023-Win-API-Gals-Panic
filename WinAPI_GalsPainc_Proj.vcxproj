@@ -76,6 +76,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -90,6 +92,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,15 +132,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ccircle.h" />
+    <ClInclude Include="CCore.h" />
+    <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="cline.h" />
+    <ClInclude Include="define.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="managers.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WinAPI_GalsPainc_Proj.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ccircle.cpp" />
+    <ClCompile Include="CCore.cpp" />
+    <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="cline.cpp" />
     <ClCompile Include="managers.cpp" />
     <ClCompile Include="WinAPI_GalsPainc_Proj.cpp" />

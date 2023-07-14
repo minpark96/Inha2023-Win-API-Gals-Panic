@@ -2,7 +2,7 @@
 class Managers
 {
 private:
-	Managers() { instance = *this; };
+	Managers() { instance; };
 	static Managers instance;
 public:
 	static Managers& getInstance() { return instance; };
