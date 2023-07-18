@@ -49,7 +49,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // Core 초기화
-    if (FAILED(CCore::GetInstance()->init(hWnd, POINT{1280, 768})))
+    if (FAILED(CCore::GetInst()->init(hWnd, POINT{1280, 768})))
     {
         MessageBox(nullptr, L"Core 객체 초기화 실패", L"ERROR", MB_OK);
 
@@ -83,7 +83,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             // Game 코드 수행
             // 디자인 패턴(설계 유형)
             // 싱글톤 패턴
-            CCore::GetInstance()->progress();
+            CCore::GetInst()->progress();
         }
     }
 
@@ -180,9 +180,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         GetClientRect(hWnd, &rectView);
-        SetTimer(hWnd, timer_ID_1, 10, NULL);
+        //SetTimer(hWnd, timer_ID_1, 10, NULL);
         break;
-    case WM_TIMER:
+    /*case WM_TIMER:
         if (wParam == timer_ID_1)
         {
             if (isLeft)
@@ -209,7 +209,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
             InvalidateRect(hWnd, NULL, FALSE);
         }
-        break;
+        break;*/
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -227,7 +227,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-    case WM_KEYDOWN:
+    /*case WM_KEYDOWN:
     {
         if (GetAsyncKeyState(VK_LEFT) & 0x8000)
         {
@@ -318,19 +318,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             lineDown = false;
         }
     }
-    break;
+    break;*/
     case WM_PAINT:
         {
             hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 
-            DrawDoubleBuffering(hWnd, hdc, cir, cl);
+            /*DrawDoubleBuffering(hWnd, hdc, cir, cl);*/
 
             EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
-        KillTimer(hWnd, timer_ID_1);
+        //KillTimer(hWnd, timer_ID_1);
         PostQuitMessage(0);
         break;
     default:
