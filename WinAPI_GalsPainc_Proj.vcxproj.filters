@@ -37,6 +37,24 @@
     <Filter Include="Engine\03. Manager\TimeMgr">
       <UniqueIdentifier>{5d37d5ea-a3b2-4426-8e9d-569b75f17197}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene">
+      <UniqueIdentifier>{e048832d-067b-4bbd-a8d8-2cd6181a80e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\SceneMgr">
+      <UniqueIdentifier>{692d9894-2612-4585-a1de-e29782b23e3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Start">
+      <UniqueIdentifier>{eec6bea3-3050-4ac1-8aad-651a2e38c5a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Tool">
+      <UniqueIdentifier>{c9535824-8c4f-40e7-8e83-17f77a6a698e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Player">
+      <UniqueIdentifier>{ca50f168-9b4e-4b48-85c2-2abfb68388e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Monster">
+      <UniqueIdentifier>{1969d2fd-e7d8-4db2-b869-fd2de5b423c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -55,9 +73,6 @@
       <Filter>Default\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ccircle.h">
-      <Filter>Default\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="managers.h">
       <Filter>Default\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CCore.h">
@@ -79,15 +94,27 @@
     <ClInclude Include="CTimeMgr.h">
       <Filter>Engine\03. Manager\TimeMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Engine\05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneMgr.h">
+      <Filter>Engine\03. Manager\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene_Start.h">
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Engine\04. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Engine\04. Object\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cline.cpp">
       <Filter>Default\소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ccircle.cpp">
-      <Filter>Default\소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="managers.cpp">
       <Filter>Default\소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CCore.cpp">
@@ -102,6 +129,21 @@
     </ClCompile>
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>Engine\03. Manager\TimeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Engine\05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CSceneMgr.cpp">
+      <Filter>Engine\03. Manager\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene_Start.cpp">
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Engine\04. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Engine\04. Object\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
