@@ -1,23 +1,26 @@
 #include "pch.h"
-#include "cline.h"
+#include "CLine.h"
 
-CLine::CLine(POINT p)
+CLine::CLine()
+	: vEnd(Vec2(0, 0))
 {
-	start = p;
-	end = p;
 }
 
 CLine::~CLine()
 {
 }
 
-void CLine::Draw(HDC hdc)
+void CLine::update()
 {
-	MoveToEx(hdc, start.x, start.y, NULL);
-	LineTo(hdc, end.x, end.y);
+	
+
+
 }
 
-void CLine::SetEnd(POINT p)
+void CLine::render(HDC _dc)
 {
-	end = p;
+	Vec2 vStart = GetPos();
+
+	MoveToEx(_dc, vStart.x, vStart.y, NULL);
+	LineTo(_dc, vEnd.x, vEnd.y);
 }

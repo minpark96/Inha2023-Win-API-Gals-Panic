@@ -49,11 +49,23 @@
     <Filter Include="Engine\05. Scene\Scene_Tool">
       <UniqueIdentifier>{c9535824-8c4f-40e7-8e83-17f77a6a698e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\Player">
+    <Filter Include="Engine\04. Object\Kinetic_Object">
+      <UniqueIdentifier>{4c313035-48fa-4786-9c99-2c271886229b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Kinetic_Object\Player">
       <UniqueIdentifier>{ca50f168-9b4e-4b48-85c2-2abfb68388e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\Monster">
+    <Filter Include="Engine\04. Object\Kinetic_Object\Missile">
+      <UniqueIdentifier>{584bd537-aa96-4b7c-836f-5b74d8bb7992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Kinetic_Object\Monster">
       <UniqueIdentifier>{1969d2fd-e7d8-4db2-b869-fd2de5b423c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Geometric_Object">
+      <UniqueIdentifier>{d30d1fd9-691d-4ecd-8628-1e9b68024cfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Geometric_Object\Line">
+      <UniqueIdentifier>{9e52ec57-f7b8-4661-a6ca-11ac5437c851}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -67,9 +79,6 @@
       <Filter>Default\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="WinAPI_GalsPainc_Proj.h">
-      <Filter>Default\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="cline.h">
       <Filter>Default\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ccircle.h">
@@ -104,16 +113,25 @@
       <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClInclude>
     <ClInclude Include="CPlayer.h">
-      <Filter>Engine\04. Object\Player</Filter>
+      <Filter>Engine\04. Object\Kinetic_Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="CMonster.h">
-      <Filter>Engine\04. Object\Monster</Filter>
+      <Filter>Engine\04. Object\Kinetic_Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CMissile.h">
+      <Filter>Engine\04. Object\Kinetic_Object\Missile</Filter>
+    </ClInclude>
+    <ClInclude Include="CLine.h">
+      <Filter>Engine\04. Object\Geometric_Object\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="CKineticObject.h">
+      <Filter>Engine\04. Object\Kinetic_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CGeometricObject.h">
+      <Filter>Engine\04. Object\Geometric_Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cline.cpp">
-      <Filter>Default\소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="ccircle.cpp">
       <Filter>Default\소스 파일</Filter>
     </ClCompile>
@@ -140,10 +158,22 @@
       <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClCompile>
     <ClCompile Include="CPlayer.cpp">
-      <Filter>Engine\04. Object\Player</Filter>
+      <Filter>Engine\04. Object\Kinetic_Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="CMonster.cpp">
-      <Filter>Engine\04. Object\Monster</Filter>
+      <Filter>Engine\04. Object\Kinetic_Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CMissile.cpp">
+      <Filter>Engine\04. Object\Kinetic_Object\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="CLine.cpp">
+      <Filter>Engine\04. Object\Geometric_Object\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="CKineticObject.cpp">
+      <Filter>Engine\04. Object\Kinetic_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CGeometricObject.cpp">
+      <Filter>Engine\04. Object\Geometric_Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

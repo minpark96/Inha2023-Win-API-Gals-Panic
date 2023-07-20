@@ -1,12 +1,30 @@
 #pragma once
-#include "CObject.h"
+#include "CKineticObject.h"
 
+enum class DIR
+{
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN,
+};
 
 class CPlayer :
-    public CObject
+    public CKineticObject
 {
+private:
+    vector<bool> m_vecPushed;
+
 public:
     virtual void update();
+    virtual void render(HDC _dc);
 
+private:
+    void CreateMissile();
+    void CreateLine();
+
+public:
+    CPlayer();
+    ~CPlayer();
 };
 

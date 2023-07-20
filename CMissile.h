@@ -1,0 +1,28 @@
+#pragma once
+#include "CKineticObject.h"
+
+
+class CMissile :
+    public CKineticObject
+{
+private:
+    float m_fDir;
+
+public:
+    void SetDir(bool _bUp)
+    {
+        if (_bUp)
+            m_fDir = -1.f;
+        else
+            m_fDir = 1.f;
+    }
+
+public:
+    virtual void update();
+    virtual void render(HDC _dc);
+
+public:
+    CMissile();
+    ~CMissile();
+};
+

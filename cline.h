@@ -1,16 +1,21 @@
 #pragma once
-#include "framework.h"
+#include "CGeometricObject.h"
 
 class CLine
+	: public CGeometricObject
 {
 private:
-	POINT start, end;
+	Vec2 vEnd;
+
 public:
-	CLine(POINT p);
+	virtual void update();
+	virtual void render(HDC _dc);
+
+public:
+	void SetEnd(Vec2 _p) { vEnd = _p; }
+
+public:
+	CLine();
 	~CLine();
-
-	void Draw(HDC hdc);
-
-	void SetEnd(POINT p);
 };
 

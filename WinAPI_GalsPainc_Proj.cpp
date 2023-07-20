@@ -180,7 +180,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
         GetClientRect(hWnd, &rectView);
-        //SetTimer(hWnd, timer_ID_1, 10, NULL);
         break;
     /*case WM_TIMER:
         if (wParam == timer_ID_1)
@@ -323,14 +322,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-
-            /*DrawDoubleBuffering(hWnd, hdc, cir, cl);*/
-
             EndPaint(hWnd, &ps);
         }
         break;
     case WM_DESTROY:
-        //KillTimer(hWnd, timer_ID_1);
         PostQuitMessage(0);
         break;
     default:
@@ -359,57 +354,57 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
     return (INT_PTR)FALSE;
 }
 
-void DrawDoubleBuffering(HWND hWnd, HDC hdc, CCircle& cir, std::list<CLine>& lines)
-{
-    HDC hMemDC, hMemDC2;
-    HBITMAP hOldBitmap, hOldBitmap2;
-    HBRUSH hBrush, oldBrush;
-
-    hMemDC = CreateCompatibleDC(hdc);
-    if (hDoubleBufferImage == NULL)
-    {
-        hDoubleBufferImage = CreateCompatibleBitmap(hdc,
-            rectView.right, rectView.bottom);
-    }
-    hOldBitmap = (HBITMAP)SelectObject(hMemDC, hDoubleBufferImage);
-
-    hBrush = CreateSolidBrush(RGB(255, 255, 255));
-    FillRect(hMemDC, &rectView, hBrush); // 배경색 채우기
-    DeleteObject(hBrush);
-
-    hMemDC2 = CreateCompatibleDC(hMemDC);
-    if (hDoubleBufferImage2 == NULL)
-    {
-        hDoubleBufferImage2 = CreateCompatibleBitmap(hdc,
-            rectView.right, rectView.bottom);
-    }
-    hOldBitmap2 = (HBITMAP)SelectObject(hMemDC2, hDoubleBufferImage2);
-
-    hBrush = CreateSolidBrush(RGB(255, 255, 255));
-    FillRect(hMemDC2, &rectView, hBrush); // 배경색 채우기
-    DeleteObject(hBrush);
-
-    hBrush = CreateSolidBrush(RGB(0, 255, 0));
-    oldBrush = (HBRUSH)SelectObject(hMemDC2, hBrush);
-    cir.Draw(hMemDC2);
-    SelectObject(hMemDC2, oldBrush);
-    DeleteObject(hBrush);  
-    
-    HPEN hPen, oldPen;
-    hPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
-    oldPen = (HPEN)SelectObject(hMemDC2, hPen);
-    for (auto cl : lines)
-    {
-        cl.Draw(hMemDC2);
-    }
-    SelectObject(hMemDC2, oldPen);
-    DeleteObject(hPen);
-
-    BitBlt(hMemDC, 0, 0, rectView.right, rectView.bottom, hMemDC2, 0, 0, SRCCOPY);
-    SelectObject(hMemDC2, hOldBitmap2);
-    DeleteDC(hMemDC2);
-
-    BitBlt(hdc, 0, 0, rectView.right, rectView.bottom, hMemDC, 0, 0, SRCCOPY);
-    SelectObject(hMemDC, hOldBitmap);
-    DeleteDC(hMemDC);
-}
+//void DrawDoubleBuffering(HWND hWnd, HDC hdc, CCircle& cir, std::list<CLine>& lines)
+//{
+//    HDC hMemDC, hMemDC2;
+//    HBITMAP hOldBitmap, hOldBitmap2;
+//    HBRUSH hBrush, oldBrush;
+//
+//    hMemDC = CreateCompatibleDC(hdc);
+//    if (hDoubleBufferImage == NULL)
+//    {
+//        hDoubleBufferImage = CreateCompatibleBitmap(hdc,
+//            rectView.right, rectView.bottom);
+//    }
+//    hOldBitmap = (HBITMAP)SelectObject(hMemDC, hDoubleBufferImage);
+//
+//    hBrush = CreateSolidBrush(RGB(255, 255, 255));
+//    FillRect(hMemDC, &rectView, hBrush); // 배경색 채우기
+//    DeleteObject(hBrush);
+//
+//    hMemDC2 = CreateCompatibleDC(hMemDC);
+//    if (hDoubleBufferImage2 == NULL)
+//    {
+//        hDoubleBufferImage2 = CreateCompatibleBitmap(hdc,
+//            rectView.right, rectView.bottom);
+//    }
+//    hOldBitmap2 = (HBITMAP)SelectObject(hMemDC2, hDoubleBufferImage2);
+//
+//    hBrush = CreateSolidBrush(RGB(255, 255, 255));
+//    FillRect(hMemDC2, &rectView, hBrush); // 배경색 채우기
+//    DeleteObject(hBrush);
+//
+//    hBrush = CreateSolidBrush(RGB(0, 255, 0));
+//    oldBrush = (HBRUSH)SelectObject(hMemDC2, hBrush);
+//    cir.Draw(hMemDC2);
+//    SelectObject(hMemDC2, oldBrush);
+//    DeleteObject(hBrush);  
+//    
+//    HPEN hPen, oldPen;
+//    hPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+//    oldPen = (HPEN)SelectObject(hMemDC2, hPen);
+//    for (auto cl : lines)
+//    {
+//        cl.Draw(hMemDC2);
+//    }
+//    SelectObject(hMemDC2, oldPen);
+//    DeleteObject(hPen);
+//
+//    BitBlt(hMemDC, 0, 0, rectView.right, rectView.bottom, hMemDC2, 0, 0, SRCCOPY);
+//    SelectObject(hMemDC2, hOldBitmap2);
+//    DeleteDC(hMemDC2);
+//
+//    BitBlt(hdc, 0, 0, rectView.right, rectView.bottom, hMemDC, 0, 0, SRCCOPY);
+//    SelectObject(hMemDC, hOldBitmap);
+//    DeleteDC(hMemDC);
+//}
