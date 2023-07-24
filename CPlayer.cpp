@@ -60,6 +60,7 @@ void CPlayer::update()
 			if (!m_vecPushed[idxKey])
 			{
 				// ¼± °´Ã¼ Ãß°¡
+				CreateLine();
 			}
 
 			for (int i = 0; i <= (int)DIR::DOWN; ++i)
@@ -79,6 +80,7 @@ void CPlayer::update()
 			if (!m_vecPushed[idxKey])
 			{
 				// ¼± °´Ã¼ Ãß°¡
+				CreateLine();
 			}
 
 			for (int i = 0; i <= (int)DIR::DOWN; ++i)
@@ -98,6 +100,7 @@ void CPlayer::update()
 			if (!m_vecPushed[idxKey])
 			{
 				// ¼± °´Ã¼ Ãß°¡
+				CreateLine();
 			}
 
 			for (int i = 0; i <= (int)DIR::DOWN; ++i)
@@ -117,6 +120,7 @@ void CPlayer::update()
 			if (!m_vecPushed[idxKey])
 			{
 				// ¼± °´Ã¼ Ãß°¡
+				CreateLine();
 			}
 
 			for (int i = 0; i <= (int)DIR::DOWN; ++i)
@@ -188,15 +192,13 @@ void CPlayer::CreateMissile()
 
 void CPlayer::CreateLine()
 {
-	Vec2 vMissilePos = GetPos();
-	vMissilePos.y -= GetScale().y / 2.f;
+	Vec2 vLinePos = GetPos();
 
 	// Line Object
-	CMissile* pMissile = new CMissile;
-	pMissile->SetPos(vMissilePos);
-	pMissile->SetScale(Vec2(25.f, 25.f));
-	pMissile->SetDir(true);
+	CLine* pLine = new CLine;
+	pLine->SetPos(vLinePos);
+	pLine->SetEnd(vLinePos);
 
 	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
-	pCurScene->AddObject(pMissile, GROUP_TYPE::DEFAULT);
+	pCurScene->AddObject(pLine, GROUP_TYPE::LINE);
 }

@@ -2,6 +2,8 @@
 #include "CScene_Start.h"
 
 #include "CCore.h"
+#include "CObject.h"
+#include "CKineticObject.h"
 #include "CPlayer.h"
 #include "CMonster.h"
 
@@ -16,7 +18,7 @@ CScene_Start::~CScene_Start()
 void CScene_Start::Enter()
 {
 	// Object Ãß°¡
-	CObject* pObj = new CPlayer;
+	CKineticObject* pObj = new CPlayer;
 	pObj->SetPos(Vec2(10.f, 10.f));
 	pObj->SetScale(Vec2(20.f, 20.f));
 	AddObject(pObj, GROUP_TYPE::PLAYER);

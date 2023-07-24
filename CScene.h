@@ -25,6 +25,16 @@ public:
 		m_arrObj[(UINT)_eType].push_back(_pObj);
 	}
 
+	CObject* GetPlayer()
+	{
+		return m_arrObj[(UINT)GROUP_TYPE::PLAYER].back();
+	}
+	
+	CObject* GetCurrentLine()
+	{
+		return m_arrObj[(UINT)GROUP_TYPE::LINE].back();
+	}
+
 public:
 	CScene();
 	virtual ~CScene();

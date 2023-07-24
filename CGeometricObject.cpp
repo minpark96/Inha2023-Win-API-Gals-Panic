@@ -2,7 +2,6 @@
 #include "CGeometricObject.h"
 
 CGeometricObject::CGeometricObject()
-	: m_vPos{}
 {
 }
 
