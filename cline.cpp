@@ -15,10 +15,7 @@ CLine::~CLine()
 
 void CLine::update()
 {
-	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
-	CObject* pPlayer = pCurScene->GetPlayer();
-	Vec2 vPos = pPlayer->GetPos();
-	vEnd = vPos;
+	
 }
 
 void CLine::render(HDC _dc)

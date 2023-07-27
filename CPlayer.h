@@ -1,5 +1,6 @@
 #pragma once
 #include "CKineticObject.h"
+#include "CLine.h"
 
 enum class DIR
 {
@@ -14,6 +15,7 @@ class CPlayer :
 {
 private:
     vector<bool> m_vecPushed;
+    CLine* m_currLine;
 
 public:
     virtual void update();

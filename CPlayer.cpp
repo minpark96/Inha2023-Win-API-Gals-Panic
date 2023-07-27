@@ -11,6 +11,7 @@
 #include "CLine.h"
 
 CPlayer::CPlayer()
+	: m_currLine(nullptr)
 {
 	for (int i = 0; i <= (int)DIR::DOWN; ++i)
 	{
@@ -45,12 +46,14 @@ void CPlayer::update()
 	{
 		vPos.y += 100.f * fDT;
 	}
+	// 스페이스바 누른 상태 (라인그리기)
 	else if (KEY_HOLD(KEY::SPACE))
 	{
-		// TODO: 이미 먹은 땅 내부로는 진입할 수 없다
+		// TODO: 이미 먹은 땅 내부 진입할 수 없다
+		// 누른채로 선상을 탈수있다. 하지만 선은 외부진입 때만 그려진다.
 
 		// 외부라면?
-		// 방향전환 -> 선 추가
+		// 방향전환 시 -> 선 추가
 		int idxKey;
 
 		if (KEY_TAP(KEY::LEFT))
@@ -158,6 +161,12 @@ void CPlayer::update()
 	}
 
 	SetPos(vPos);
+
+	// 현재 그리고 있는 라인 갱신!
+	if (m_currLine != nullptr)
+	{
+		m_currLine->SetEnd(vPos);
+	}
 }
 
 void CPlayer::render(HDC _dc)
@@ -201,4 +210,6 @@ void CPlayer::CreateLine()
 
 	CScene* pCurScene = CSceneMgr::GetInst()->GetCurScene();
 	pCurScene->AddObject(pLine, GROUP_TYPE::LINE);
+
+	m_currLine = pLine;
 }
