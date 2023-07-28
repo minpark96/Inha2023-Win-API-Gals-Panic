@@ -2,20 +2,18 @@
 #include "CKineticObject.h"
 #include "CLine.h"
 
-enum class DIR
-{
-    LEFT,
-    RIGHT,
-    UP,
-    DOWN,
-};
-
 class CPlayer :
     public CKineticObject
 {
 private:
     vector<bool> m_vecPushed;
-    CLine* m_currLine;
+    vector<vector<Vec2>> m_vecLine;
+    int m_iIdx;
+    int m_iSpeed;
+    double m_dAccumX;
+    double m_dAccumY;
+    Vec2 m_vDelta;
+    int m_iCurKey;
 
 public:
     virtual void update();
@@ -23,7 +21,7 @@ public:
 
 private:
     void CreateMissile();
-    void CreateLine();
+    void DrawLine();
 
 public:
     CPlayer();

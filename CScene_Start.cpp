@@ -19,8 +19,8 @@ void CScene_Start::Enter()
 {
 	// Object 추가
 	CKineticObject* pObj = new CPlayer;
-	pObj->SetPos(Vec2(10.f, 10.f));
-	pObj->SetScale(Vec2(20.f, 20.f));
+	pObj->SetPos(Vec2(10, 10));
+	pObj->SetScale(Vec2(20, 20));
 	AddObject(pObj, GROUP_TYPE::PLAYER);
 
 	//// 몬스터 배치
